@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { getComments, getSubredditPosts } from '../api/reddit';
 
 const initialState = {
@@ -78,3 +78,54 @@ export const {
 export default redditSlice.reducer;
 
 // Redux thunks for getting posts, comments,
+export const fetchPosts = (subreddit) => async (dispatch) => {
+  try {
+    dispatch(getCommentsPending());
+    const posts = await getSubredditPosts(subreddit);
+
+    // We need to add extra fields for showing the comments of the Posts.
+    // This is done here due to needing to call another API endpoint to display
+    // the comments.
+    // *********** NEW CONCEPT FOR ME ***************
+    // We update the object of a post with more fields on the go?
+    const postsWithMetaData = posts.map((post) => ({
+      ...post,
+      showingComments: false,
+      comments: [],
+      loadingComments: false,
+      errorComments: false,
+    }));
+    dispatch(getPostsSuccess(postsWithMetaData));
+  } catch (error) {
+    dispatch(getPostsRejected());
+  }
+};
+
+export const fetchComments = (index, permalink) => async (dispatch) => {
+  try {
+    dispatch(getCommentsPending(index));
+    const comments = await getComments(permalink);
+    dispatch(getCommentsSuccess({ index, comments }));
+  } catch (error) {
+    dispatch(getCommentsRejected(index));
+  }
+};
+
+// ****** Still need to understand this. never saw it in lessons ******
+const selectPosts = (state) => state.reddit.posts;
+const selectSearchTerm = (state) => state.reddit.searchTerm;
+export const selectSelectedSubreddit = (state) =>
+  state.reddit.selectedSubreddit;
+
+// This function does the selecting posts rendered on the screen depending on the
+// search term of the input field.
+export const selectFilteredPosts = createSelector(
+  [selectPosts, selectSearchTerm],
+  (posts, searchTerm) => {
+    if (searchTerm !== '') {
+      return posts.filter((post) =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+  }
+);
