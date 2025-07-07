@@ -76,3 +76,5 @@ export const {
 } = redditSlice.actions;
 
 export default redditSlice.reducer;
+
+// Redux thunks for getting posts, comments,
