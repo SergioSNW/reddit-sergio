@@ -1,5 +1,6 @@
+import { getRedditToken } from '../otherFunctions/getRedditToken';
 // Root of the Reddit API URL, used by fetching methods
-export const API_ROOT = 'https://api.reddit.com';
+export const API_ROOT = 'https://oauth.reddit.com';
 // Previous URL was https://www.reddit.com
 // https://www.reddit.com/r/reddit.com/wiki/api/
 // Check previous address for registration in order to use the api
@@ -8,7 +9,13 @@ export const API_ROOT = 'https://api.reddit.com';
 
 // Method for fetching Subreddits
 export const getSubreddits = async () => {
-  const response = await fetch(`${API_ROOT}/subreddits.json`);
+  const token = await getRedditToken();
+  const response = await fetch(`${API_ROOT}/subreddits.json`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'User-Agent': 'sergio-client/0.1 by SergioTom',
+    },
+  });
   const json = await response.json();
 
   return json.data.children.map((subreddit) => subreddit.data);

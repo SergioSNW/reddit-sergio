@@ -36,7 +36,7 @@ export const {
 export default subredditSlice.reducer;
 
 // Redux thunk for fetching Subreddits
-export const fetchSubreddits = async (dispatch) => {
+export const fetchSubreddits = () => async (dispatch) => {
   try {
     dispatch(getSubredditsPending());
     const subreddits = await getSubreddits();

@@ -1,0 +1,2 @@
+- still to uninstall reactip as it depends on @emotion/core and this module has been renamed to @emotion/react
+- alternative to reactip, still within React 19 is framer-motion module which is now installed.

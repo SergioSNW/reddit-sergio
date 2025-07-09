@@ -1,8 +1,9 @@
 import './Home.css';
-import React, { useState, useEffect } from 'react';
-// import { AnimatedList } from 'reactip';
+import React, { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import randomNumber from '../../otherFunctions/randomNumber';
+import PostLoading from '../Post/PostLoading';
 import Post from '../Post/Post';
 import {
   fetchPosts,
@@ -32,19 +33,31 @@ const Home = () => {
 
   // if (isLoading) {
   //   return (
-  //   //   <AnimatedList animation="zoom">
-  //   //     {Array(randomNumber(3, 10)).fill(<p>Post Loading</p>)}
-  //   //   </AnimatedList>
-  //   )
+  //     <AnimatedList animation="zoom">
+  //       {Array(randomNumber(3, 10)).fill(<PostLoading />)}
+  //     </AnimatedList>
+  //   );
   // }
 
-  //   if (isLoading) {
-  //     return (
-  //       <AnimatedList animation="zoom">
-  //         {Array(randomNumber(3, 10)).fill(<p>Post Loading</p>)}
-  //       </AnimatedList>
-  //     );
-  //   }
+  if (isLoading) {
+    return (
+      <div>
+        <AnimatePresence>
+          {Array.from({ length: randomNumber(3, 10) }).map((_, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <PostLoading />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    );
+  }
 
   if (error) {
     return (
