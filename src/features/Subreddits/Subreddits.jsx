@@ -17,6 +17,8 @@ const Subreddits = () => {
     dispatch(fetchSubreddits());
   }, [dispatch]);
 
+  // console.log(subreddits);
+
   if (!subreddits || selectedSubreddit) {
     return (
       <div>
@@ -30,7 +32,7 @@ const Subreddits = () => {
     <Card className="subreddit-card">
       <h2>Subreddits</h2>
       <ul className="subreddits-list">
-        {subreddits.map((subreddit) => {
+        {subreddits.map((subreddit) => (
           <li
             key={subreddit.id}
             className={`${
@@ -50,10 +52,13 @@ const Subreddits = () => {
                 className="subreddit-icon"
                 style={{ border: `3px solid ${subreddit.primary_color} ` }}
               />
-              {subreddit.display_name}
+              <strong>
+                {subreddit.display_name_prefixed ||
+                  `r/${subreddit.display_name}`}
+              </strong>
             </button>
-          </li>;
-        })}
+          </li>
+        ))}
       </ul>
     </Card>
   );

@@ -5,6 +5,7 @@ import Home from './features/Home/Home';
 import Subreddits from './features/Subreddits/Subreddits';
 
 function App() {
+  console.log('App rendered');
   return (
     <div className="App">
       <Header />

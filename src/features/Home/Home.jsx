@@ -14,13 +14,14 @@ import {
 
 const Home = () => {
   const reddit = useSelector((state) => state.reddit);
-  const { isLoading, error, searchTerm, selectedSubreddit } = reddit;
-  const posts = useSelector(selectFilteredPosts);
+  const { posts, isLoading, error, searchTerm, selectedSubreddit } = reddit;
+  // const posts = useSelector(selectFilteredPosts);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('Dispatching fetchPosts for:', selectedSubreddit);
     dispatch(fetchPosts(selectedSubreddit));
-  }, [selectedSubreddit]);
+  }, [dispatch, selectedSubreddit]);
 
   // *** FUNCTION TO HANDLE Click events on comments to toggle
   const onToggleComments = (index) => {
@@ -31,6 +32,14 @@ const Home = () => {
     return getComments;
   };
 
+  console.log(
+    'Redux state:',
+    useSelector((state) => state)
+  );
+  console.log('Home component rendered');
+
+  console.log('NOW ITS THE HOME.JSX');
+  console.log(posts);
   // if (isLoading) {
   //   return (
   //     <AnimatedList animation="zoom">
@@ -87,11 +96,13 @@ const Home = () => {
   return (
     <div>
       {posts.map((post, index) => {
-        <Post
-          key={post.id}
-          post={post}
-          onToggleComments={onToggleComments(index)}
-        />;
+        return (
+          <Post
+            key={post.id}
+            post={post}
+            onToggleComments={onToggleComments(index)}
+          />
+        );
       })}
     </div>
   );

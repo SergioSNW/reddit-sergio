@@ -8,6 +8,8 @@ const USER_AGENT = 'sergio-client/0.1 by SergioTom';
 
 // We are going to need several methods. One for fetching Posts of a Subreddit, Subreddits, Comments.
 
+// console.log('Reddit posts JSON:', json);
+
 // Method for fetching Subreddits
 export const getSubreddits = async () => {
   const token = await getRedditToken();
@@ -26,16 +28,24 @@ export const getSubreddits = async () => {
 
 // Method for getting Posts within a Subreddit
 export const getSubredditPosts = async (subreddit) => {
-  const token = await getRedditToken();
-  const response = await fetch(`${API_ROOT}/${subreddit}.json`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'User-Agent': USER_AGENT,
-    },
-  });
-  const json = await response.json();
-  console.log('Hello, this is getSubredditPosts async method from reddit.js.');
-  return json.data.children.map((post) => post.data);
+  try {
+    const token = await getRedditToken();
+    const response = await fetch(`${API_ROOT}/${subreddit}.json`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'User-Agent': USER_AGENT,
+      },
+    });
+
+    const json = await response.json();
+    console.log(
+      'Hello, this is getSubredditPosts async method from reddit.js.'
+    );
+    return json.data.children.map((post) => post.data);
+  } catch (err) {
+    console.error('Failed to fetch posts: ', err);
+    return [];
+  }
 };
 
 // Method for getting a post's comments
