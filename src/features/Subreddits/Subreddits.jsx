@@ -19,7 +19,7 @@ const Subreddits = () => {
 
   // console.log(subreddits);
 
-  if (!subreddits || selectedSubreddit) {
+  if (!subreddits) {
     return (
       <div>
         <h2>Subreddits</h2>
