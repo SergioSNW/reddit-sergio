@@ -80,7 +80,7 @@ export default redditSlice.reducer;
 // Redux thunks for getting posts, comments,
 export const fetchPosts = (subreddit) => async (dispatch) => {
   try {
-    dispatch(getCommentsPending());
+    dispatch(getPostsPending());
     console.log('fetchPosts thunk called with:', subreddit);
     const posts = await getSubredditPosts(subreddit);
     console.log('fetchPosts thunk got posts:', posts);
@@ -98,6 +98,7 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
     }));
     dispatch(getPostsSuccess(postsWithMetaData));
   } catch (error) {
+    console.error('fetchPosts thunk error:', error);
     dispatch(getPostsRejected());
   }
 };
