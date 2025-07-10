@@ -19,7 +19,10 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('Dispatching fetchPosts for:', selectedSubreddit);
+    console.log(
+      'useEffect running: dispatching fetchPosts for',
+      selectedSubreddit
+    );
     dispatch(fetchPosts(selectedSubreddit));
   }, [dispatch, selectedSubreddit]);
 
@@ -39,7 +42,8 @@ const Home = () => {
   console.log('Home component rendered');
 
   console.log('NOW ITS THE HOME.JSX');
-  console.log(posts);
+  console.log(`Selected Subreddit: ` + selectedSubreddit);
+  console.log(`Posts:  ${posts}`);
   // if (isLoading) {
   //   return (
   //     <AnimatedList animation="zoom">

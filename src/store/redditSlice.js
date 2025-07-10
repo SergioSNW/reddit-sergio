@@ -6,7 +6,7 @@ const initialState = {
   error: false,
   isLoading: false,
   searchTerm: '',
-  selectedSubreddit: 'r/popular',
+  selectedSubreddit: 'r/gshock',
 };
 
 const redditSlice = createSlice({
@@ -81,8 +81,9 @@ export default redditSlice.reducer;
 export const fetchPosts = (subreddit) => async (dispatch) => {
   try {
     dispatch(getCommentsPending());
+    console.log('fetchPosts thunk called with:', subreddit);
     const posts = await getSubredditPosts(subreddit);
-
+    console.log('fetchPosts thunk got posts:', posts);
     // We need to add extra fields for showing the comments of the Posts.
     // This is done here due to needing to call another API endpoint to display
     // the comments.
