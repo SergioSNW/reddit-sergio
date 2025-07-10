@@ -17,6 +17,15 @@ const Subreddits = () => {
     dispatch(fetchSubreddits());
   }, [dispatch]);
 
+  if (!subreddits || selectedSubreddit) {
+    return (
+      <div>
+        <h2>Subreddits</h2>
+        <p>There was some kind of error</p>
+      </div>
+    );
+  }
+
   return (
     <Card className="subreddit-card">
       <h2>Subreddits</h2>

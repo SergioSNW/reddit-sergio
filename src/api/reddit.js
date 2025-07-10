@@ -18,7 +18,9 @@ export const getSubreddits = async () => {
     },
   });
   const json = await response.json();
-
+  console.log(json);
+  console.log('Hello, this is getSubreddits async method from reddit.js.');
+  console.log(json.data.children.map((subreddit) => subreddit.data));
   return json.data.children.map((subreddit) => subreddit.data);
 };
 
@@ -32,7 +34,7 @@ export const getSubredditPosts = async (subreddit) => {
     },
   });
   const json = await response.json();
-
+  console.log('Hello, this is getSubredditPosts async method from reddit.js.');
   return json.data.children.map((post) => post.data);
 };
 
@@ -46,7 +48,7 @@ export const getComments = async (permalink) => {
     },
   });
   const json = await response.json();
-
+  console.log('Hello, this is getComments async method from reddit.js.');
   return json[1].data.children.map((comments) => comments.data);
 };
 
@@ -63,6 +65,6 @@ export const fetchSubreddit = async (searchTerm) => {
     }
   );
   const json = await response.json();
-
+  console.log('Hello, this is fetchSubreddits async method from reddit.js.');
   return json.data.children.map((element) => element.data);
 };
