@@ -37,8 +37,9 @@ const redditSlice = createSlice({
       state.searchTerm = '';
     },
     toggleShowingComments(state, action) {
-      state.posts[action.payload].showingComments =
-        !state.posts[action.payload].showingComments;
+      const post = state.posts.find((p) => p.id === action.payload);
+      if (!post) return;
+      post.showingComments = !post.showingComments;
     },
     getCommentsPending(state, action) {
       // If comments are hidden, we return.

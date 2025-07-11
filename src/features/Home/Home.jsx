@@ -10,6 +10,7 @@ import {
   selectFilteredPosts,
   setSearchTerm,
   fetchComments,
+  toggleShowingComments,
 } from '../../store/redditSlice';
 
 const Home = () => {
@@ -105,8 +106,12 @@ const Home = () => {
             key={post.id}
             post={post}
             onToggleComments={() => {
-              if (!post.showingComments) {
+              if (!post.showingComments && post.comments.length === 0) {
+                // Fetches and displays comments if they are not shown or not loaded
                 dispatch(fetchComments(post.id, post.permalink));
+              } else {
+                // If they are shown or loaded, just hide them.
+                dispatch(toggleShowingComments(post.id));
               }
             }}
             // onToggleComments={onToggleComments(index)}
