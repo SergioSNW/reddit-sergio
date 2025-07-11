@@ -47,19 +47,25 @@ const redditSlice = createSlice({
       // if (!state.posts[action.payload].showingComments) {
       //   return;
       // }
-      state.posts[action.payload].showingComments = true; /// new line instead of the block above
-      state.posts[action.payload].loadingComments = true;
-      state.posts[action.payload].error = false;
+      const post = state.posts.find((p) => p.id === action.payload);
+      if (!post) return;
+      post.showingComments = true; /// new line instead of the block above
+      post.loadingComments = true;
+      post.error = false;
     },
     getCommentsSuccess(state, action) {
-      state.posts[action.payload].comments = action.payload.comments;
-      state.posts[action.payload].loadingComments = false;
-      state.posts[action.payload].error = false;
+      const { postId, comments } = action.payload;
+      const post = state.posts.find((p) => p.id === postId);
+      if (!post) return;
+      post.comments = comments;
+      post.loadingComments = false;
+      post.error = false;
     },
     getCommentsRejected(state, action) {
-      state.posts[action.payload].loadingComments = false;
-      state.posts[action.payload].error = true;
-      state.posts[action.payload].showingComments = false; /// Optional due to block commented on pending.
+      const post = state.posts.find((p) => p.id === action.payload);
+      if (!post) return;
+      post.loadingComments = false;
+      post.error = true; /// Optional due to block commented on pending.
     },
   },
 });
@@ -105,17 +111,17 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
   }
 };
 
-export const fetchComments = (index, permalink) => async (dispatch) => {
+export const fetchComments = (postId, permalink) => async (dispatch) => {
   try {
-    dispatch(getCommentsPending(index));
-    console.log('Fetching comments for:', permalink, 'at index:', index);
+    dispatch(getCommentsPending(postId));
+    console.log('Fetching comments for:', permalink, 'at index:', postId);
     const comments = await getComments(permalink);
     console.log('Fetched comments:', comments);
 
-    dispatch(getCommentsSuccess({ index, comments }));
+    dispatch(getCommentsSuccess({ postId, comments }));
   } catch (error) {
     console.error('Error fetching comments:', error);
-    dispatch(getCommentsRejected(index));
+    dispatch(getCommentsRejected(postId));
   }
 };
 

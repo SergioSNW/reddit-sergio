@@ -15,7 +15,7 @@ const Comment = (props) => {
           {moment.unix(comment.created_utc).fromNow()}
         </p>
       </div>
-      <ReactMarkdown source={comment.body} />
+      <ReactMarkdown>{comment.body}</ReactMarkdown>
     </div>
   );
 };

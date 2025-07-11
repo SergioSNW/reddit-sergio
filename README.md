@@ -9,3 +9,5 @@ Under Development
 ## Features
 
 ## Future Work
+
+CTRL + SHIFT + V for good reading in VSCode

@@ -106,7 +106,7 @@ const Home = () => {
             post={post}
             onToggleComments={() => {
               if (!post.showingComments) {
-                dispatch(fetchComments(index, post.permalink));
+                dispatch(fetchComments(post.id, post.permalink));
               }
             }}
             // onToggleComments={onToggleComments(index)}
