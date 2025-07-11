@@ -103,7 +103,7 @@ const Post = (props) => {
               {renderUpVote()}
             </button>
             <p className={`post-votes-value ${getVoteType()}`}>
-              {shortenNumber(post.ups, 1)}
+              {shortenNumber(post.ups + voteCounter, 1)}
             </p>
             <button
               type="button"
