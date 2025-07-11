@@ -104,7 +104,12 @@ const Home = () => {
           <Post
             key={post.id}
             post={post}
-            onToggleComments={onToggleComments(index)}
+            onToggleComments={() => {
+              if (!post.showingComments) {
+                dispatch(fetchComments(index, post.permalink));
+              }
+            }}
+            // onToggleComments={onToggleComments(index)}
           />
         );
       })}

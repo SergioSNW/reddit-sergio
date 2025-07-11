@@ -33,11 +33,17 @@
 
 .App {
   text-align: center;
+  display: grid;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+main {
+  padding-left: var(--spacing-2);
+  grid-column: 1 / 2;
 }
 
 @media (prefers-reduced-motion: no-preference) {

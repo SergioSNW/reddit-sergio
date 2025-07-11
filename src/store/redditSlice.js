@@ -42,11 +42,12 @@ const redditSlice = createSlice({
     },
     getCommentsPending(state, action) {
       // If comments are hidden, we return.
-      state.posts[action.payload].showingComments =
-        !state.posts[action.payload].showingComments;
-      if (!state.posts[action.payload].showingComments) {
-        return;
-      }
+      // state.posts[action.payload].showingComments =
+      //   !state.posts[action.payload].showingComments;
+      // if (!state.posts[action.payload].showingComments) {
+      //   return;
+      // }
+      state.posts[action.payload].showingComments = true; /// new line instead of the block above
       state.posts[action.payload].loadingComments = true;
       state.posts[action.payload].error = false;
     },
@@ -58,6 +59,7 @@ const redditSlice = createSlice({
     getCommentsRejected(state, action) {
       state.posts[action.payload].loadingComments = false;
       state.posts[action.payload].error = true;
+      state.posts[action.payload].showingComments = false; /// Optional due to block commented on pending.
     },
   },
 });
@@ -106,9 +108,13 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
 export const fetchComments = (index, permalink) => async (dispatch) => {
   try {
     dispatch(getCommentsPending(index));
+    console.log('Fetching comments for:', permalink, 'at index:', index);
     const comments = await getComments(permalink);
+    console.log('Fetched comments:', comments);
+
     dispatch(getCommentsSuccess({ index, comments }));
   } catch (error) {
+    console.error('Error fetching comments:', error);
     dispatch(getCommentsRejected(index));
   }
 };

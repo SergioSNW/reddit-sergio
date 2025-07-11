@@ -50,6 +50,7 @@ export const getSubredditPosts = async (subreddit) => {
 
 // Method for getting a post's comments
 export const getComments = async (permalink) => {
+  console.log('API call to Reddit comments:', permalink);
   const token = await getRedditToken();
   const response = await fetch(`${API_ROOT}${permalink}.json`, {
     headers: {

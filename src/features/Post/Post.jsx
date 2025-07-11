@@ -100,10 +100,10 @@ const Post = (props) => {
               onClick={() => onHandleVote(1)}
               aria-label="up vote"
             >
-              {renderUpVote}
+              {renderUpVote()}
             </button>
             <p className={`post-votes-value ${getVoteType()}`}>
-              {shortenNumber(postMessage.ups, 1)}
+              {shortenNumber(post.ups, 1)}
             </p>
             <button
               type="button"
@@ -113,7 +113,7 @@ const Post = (props) => {
               onClick={() => onHandleVote(-1)}
               aria-label="down vote"
             >
-              {renderDownVote}
+              {renderDownVote()}
             </button>
           </div>
           <div className="post-container">
@@ -133,7 +133,7 @@ const Post = (props) => {
                   className={`icon-action-button ${
                     post.showingComments && 'showing-comments'
                   }`}
-                  onClick={() => onToggleComments(post.permalink)}
+                  onClick={() => onToggleComments()}
                   aria-label="show comments"
                 >
                   <TiMessage className="icon-action" />
