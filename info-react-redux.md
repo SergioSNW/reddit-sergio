@@ -1,4 +1,4 @@
-¡Perfecto! Vamos a ver un ejemplo **completo y sencillo** de Redux con acciones normales y thunks, usando Redux Toolkit y React.
+# Vamos a ver un ejemplo **completo y sencillo** de Redux con acciones normales y thunks, usando Redux Toolkit y React.
 
 ## 1. Reducer y Slice
 
@@ -238,12 +238,10 @@ export default App;
   dispatch(sumarAsync()); // sube el contador tras 1 segundo
   ```
 
-¿Te gustaría que te explique alguna parte con más detalle, o quieres probarlo y preguntar sobre el resultado?
-
----------------------------------
 
 
-Aquí tienes una explicación visual y clara de **cómo interactúan store, reducer, slice, dispatch, select y los componentes** en una aplicación React con Redux Toolkit:
+#
+# Aquí tienes una explicación visual y clara de **cómo interactúan store, reducer, slice, dispatch, select y los componentes** en una aplicación React con Redux Toolkit:
 
 ## 1. Estructura de alto nivel
 
@@ -350,14 +348,14 @@ function App() {
 - **useSelector** (o selectores) permiten a los componentes leer el estado.
 - Los componentes nunca modifican el estado directamente, solo despachan acciones[1][2][3][5][6].
 
-¿Quieres que te explique algún paso con más detalle o con otro ejemplo?
+## Referencia a paginas relacionadas:
+- [1] https://imaginaformacion.com/tutoriales/que-es-y-como-usar-redux-en-react
+- [2] https://www.hackio.com/blog/redux-el-patron-de-arquitectura-de-datos
+- [3] http://blog.enriqueoriol.com/2018/08/que-es-redux.html
+- [4] https://carlosazaustre.es/como-funciona-redux-conceptos-basicos
+- [5] https://antonio-richaud.com/blog/archivo/publicaciones/05-redux.html
+- [6] https://blog.openreplay.com/es/entender-redux-react-gestionar-estado/
+- [7] https://oxygenacademy.es/que-es-redux-y-por-que-deberias-implementarlo-en-tus-aplicaciones-react/
+- [8] https://leanpub.com/react-redux/read
+- [9] https://keepcoding.io/blog/funcionamiento-de-redux-con-vue/
 
-[1] https://imaginaformacion.com/tutoriales/que-es-y-como-usar-redux-en-react
-[2] https://www.hackio.com/blog/redux-el-patron-de-arquitectura-de-datos
-[3] http://blog.enriqueoriol.com/2018/08/que-es-redux.html
-[4] https://carlosazaustre.es/como-funciona-redux-conceptos-basicos
-[5] https://antonio-richaud.com/blog/archivo/publicaciones/05-redux.html
-[6] https://blog.openreplay.com/es/entender-redux-react-gestionar-estado/
-[7] https://oxygenacademy.es/que-es-redux-y-por-que-deberias-implementarlo-en-tus-aplicaciones-react/
-[8] https://leanpub.com/react-redux/read
-[9] https://keepcoding.io/blog/funcionamiento-de-redux-con-vue/

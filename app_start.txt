@@ -1,0 +1,14 @@
+situacion del fichero .env >>> /src/server/.env
+
+necesitas abrir 2 terminales
+
+terminal 1: cd src/server
+terminal 1: node server.js
+terminal 1: tiene que salir: Server running on port 5050
+si puedes confirmar primero en una pestanha con localhost:5050
+http://localhost:5050/api/reddit-token
+en esta URL una vez arrancado el 5050 te tiene que salir un access token
+
+terminal 2: npm start (en el raiz)
+el backend funciona y tienes token de acceso a reddit x el oauth
+despues deberias ver una lista de subreddits en el front
