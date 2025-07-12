@@ -36,22 +36,15 @@ const Home = () => {
     return getComments;
   };
 
-  console.log(
-    'Redux state:',
-    useSelector((state) => state)
-  );
-  console.log('Home component rendered');
+  // console.log(
+  //   'Redux state:',
+  //   useSelector((state) => state)
+  // );
+  // console.log('Home component rendered');
 
-  console.log('NOW ITS THE HOME.JSX');
-  console.log(`Selected Subreddit: ` + selectedSubreddit);
-  console.log(`Posts:  ${posts}`);
-  // if (isLoading) {
-  //   return (
-  //     <AnimatedList animation="zoom">
-  //       {Array(randomNumber(3, 10)).fill(<PostLoading />)}
-  //     </AnimatedList>
-  //   );
-  // }
+  // console.log('NOW ITS THE HOME.JSX');
+  // console.log(`Selected Subreddit: ` + selectedSubreddit);
+  // console.log(`Posts:  ${posts}`);
 
   if (isLoading) {
     return (

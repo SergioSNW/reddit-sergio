@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import { setSearchTerm } from '../../store/redditSlice';
+import { setSearchTerm, setSelectedSubreddit } from '../../store/redditSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoMdMedical } from 'react-icons/io';
 import { FaSearch } from 'react-icons/fa';
@@ -22,7 +22,14 @@ const Header = () => {
 
   const onSearchTermSubmit = (e) => {
     e.preventDefault();
-    dispatch(setSearchTerm(searchTermBar));
+    if (searchTerm.trim() === '') return;
+    // Ensure the subreddit string starts with "r/"
+    const subreddit = searchTerm.startsWith('r/')
+      ? searchTerm
+      : `r/${searchTerm}`;
+    dispatch(setSelectedSubreddit(subreddit));
+    // dispatch(setSearchTerm(searchTermBar));
+    dispatch(setSearchTerm(''));
   };
 
   return (
