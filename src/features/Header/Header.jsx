@@ -13,7 +13,7 @@ const Header = () => {
   // This function keeps track of the User input typed on the input field
   // It will be added to the input JSX element
   const onSearchTermChange = (e) => {
-    setSearchTermBar(e.target.value);
+    dispatch(setSearchTerm(e.target.value));
   };
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const Header = () => {
 
   const onSearchTermSubmit = (e) => {
     e.preventDefault();
+    console.log('Submit triggered!');
     if (searchTerm.trim() === '') return;
     // Ensure the subreddit string starts with "r/"
     const subreddit = searchTerm.startsWith('r/')
