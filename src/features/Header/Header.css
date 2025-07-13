@@ -54,6 +54,7 @@ form {
 .search input {
   /* flex-grow: 1; */
   width: 100%;
+  min-width: 20vw;
   height: auto;
   min-height: 1.5rem;
   border: 2px solid black;

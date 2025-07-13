@@ -72,7 +72,7 @@ const Header = () => {
       <form className="search" onSubmit={onSearchTermSubmit}>
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Search for a Subreddit"
           value={searchTermBar}
           onChange={onSearchTermChange}
           aria-label="search-posts"
