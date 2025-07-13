@@ -28,7 +28,16 @@
 }
 
 .post-image-container .post-image {
-  width: 100%;
+  /* width: 100%; */
+  max-width: 100%; /* Makes image responsive to parent width */
+  max-height: 400px; /* Adjust this value to your preferred height */
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Centers the image horizontally */
+  object-fit: contain; /* Prevents distortion, shows full image */
+  border-radius: 8px; /* Optional: rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); /* Optional: subtle shadow */
 }
 
 .post-title {

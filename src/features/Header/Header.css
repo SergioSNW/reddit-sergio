@@ -22,12 +22,17 @@ header .logo {
   padding: 0px;
 }
 
-header .title {
+.title {
   padding-left: 20px;
   font-size: 2rem;
+  color: black;
 }
 
-header span {
+[data-theme='dark'] .title {
+  color: white;
+}
+
+.title span {
   font-style: italic;
   font-weight: 500;
   background-color: #151515;
@@ -36,7 +41,7 @@ header span {
   border-radius: 10px;
 }
 
-header form {
+form {
   align-self: center;
   border-radius: 12px;
 }

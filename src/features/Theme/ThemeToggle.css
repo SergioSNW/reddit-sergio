@@ -1,0 +1,72 @@
+/* .theme-toggle-btn {
+  background: var(--color-foreground);
+  color: var(--color-text-header);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  transition: background 0.2s, color 0.2s;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--color-on-hover);
+} */
+
+.theme-switch {
+  position: relative;
+  top: 30px;
+  width: 80px;
+  height: 32px;
+  background: var(--color-background-secondary, #f3f3f3);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  outline: none;
+  box-shadow: var(--box-shadow, 0 2px 8px rgba(0, 0, 0, 0.07));
+}
+
+.theme-switch.dark {
+  background: var(--color-foreground, #232323);
+}
+
+.theme-switch-slider {
+  border: white 1px solid;
+  position: absolute;
+  top: 3px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  background: var(--color-branding, #3d5af1);
+  border-radius: 42%;
+  transition: left 0.3s, background 0.3s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-switch.dark .theme-switch-slider {
+  left: 40px;
+  background: var(--color-branding, #5876cd);
+}
+
+.theme-switch-icon {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  font-size: 1.2rem;
+  pointer-events: none;
+  color: var(--color-text-header, #444);
+}
+
+.theme-switch.dark .theme-switch-icon {
+  left: 8px;
+  right: auto;
+  color: var(--color-text-header, #f5f5f5);
+}

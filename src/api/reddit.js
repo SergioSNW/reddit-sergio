@@ -63,19 +63,49 @@ export const getComments = async (permalink) => {
   return json[1].data.children.map((comments) => comments.data);
 };
 
-// I want a method for finding a specific Subreddit
-export const fetchSubreddit = async (searchTerm) => {
-  const token = await getRedditToken();
-  const response = await fetch(
-    `${API_ROOT}/search/.json?q=${searchTerm}&type=sr`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'User-Agent': USER_AGENT,
-      },
-    }
-  );
-  const json = await response.json();
-  console.log('Hello, this is fetchSubreddits async method from reddit.js.');
-  return json.data.children.map((element) => element.data);
-};
+// *************** MY ORIGINAL METHOD FOR THE SEARCH BAR ***********************
+// ********************** NOT IN USE NOW ***************************************
+// export const fetchSubreddit = async (searchTerm) => {
+//   const token = await getRedditToken();
+//   const response = await fetch(
+//     `${API_ROOT}/search/.json?q=${searchTerm}&type=sr`,
+//     {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         'User-Agent': USER_AGENT,
+//       },
+//     }
+//   );
+//   const json = await response.json();
+//   console.log('Hello, this is fetchSubreddits async method from reddit.js.');
+//   return json.data.children.map((element) => element.data);
+// };
+
+// ******** AUTOCOMPLETE REDDIT OWN ROUTE ***********
+// export async function fetchSubredditSuggestions(query) {
+//   const token = await getRedditToken();
+//   const response = await fetch(`${API_ROOT}/api/search_reddit_names`, {
+//     method: 'POST',
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ query }),
+//   });
+//   if (!response.ok) return [];
+//   const data = await response.json();
+//   return data.names || [];
+// };
+
+export async function fetchSubredditSuggestions(query) {
+  const response = await fetch('http://localhost:5050/api/search-subreddits', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query }),
+  });
+  if (!response.ok) return [];
+  const data = await response.json();
+  return data.names || [];
+}
