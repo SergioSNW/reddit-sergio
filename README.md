@@ -11,7 +11,7 @@ First you need to get the Repository on your machine, open it with your Favorite
 For the Front End:
 
 - React: Quick, Modern and Reliable Javascript Framework for building User Interfaces.
-- Reddux: Used to manage and centralize all state and complex data within a React Application. Reddux hold the "truth" of the Application.
+- Redux: Used to manage and centralize all state and complex data within a React Application. Redux hold the "truth" of the Application.
 
 For the Back End:
 
