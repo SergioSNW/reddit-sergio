@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './features/Header/Header';
 import Home from './features/Home/Home';
 import Subreddits from './features/Subreddits/Subreddits';
 import { ThemeProvider } from './features/Theme/ThemeContext';
-import ThemeToggle from './features/Theme/ThemeToggle';
 
 function App() {
   console.log('App rendered');

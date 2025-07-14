@@ -7,7 +7,6 @@ import PostLoading from '../Post/PostLoading';
 import Post from '../Post/Post';
 import {
   fetchPosts,
-  selectFilteredPosts,
   setSearchTerm,
   fetchComments,
   toggleShowingComments,
@@ -28,13 +27,13 @@ const Home = () => {
   }, [dispatch, selectedSubreddit]);
 
   // *** FUNCTION TO HANDLE Click events on comments to toggle
-  const onToggleComments = (index) => {
-    const getComments = (permalink) => {
-      dispatch(fetchComments(index, permalink));
-    };
+  // const onToggleComments = (index) => {
+  //   const getComments = (permalink) => {
+  //     dispatch(fetchComments(index, permalink));
+  //   };
 
-    return getComments;
-  };
+  //   return getComments;
+  // };
 
   // console.log(
   //   'Redux state:',
