@@ -6,7 +6,7 @@ export const getRedditToken = async () => {
   const response = await fetch(
     'https://reddit-sergio-backend-production.up.railway.app/api/reddit-token'
   );
-  //, {
+  //, { Something
   //   method: 'GET',
   //   headers: {
   //     Authorization: `Basic ${credentials}`,
